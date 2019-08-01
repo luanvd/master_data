@@ -5,3 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require "master_importer/csv_importer"
+[M::Job].each do |model|
+  MasterImporter::CSVImporter.new(model).execute
+end
